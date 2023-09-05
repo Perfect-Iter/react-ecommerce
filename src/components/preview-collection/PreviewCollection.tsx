@@ -1,5 +1,8 @@
 import React from 'react'
 
+import './preview-collection.scss'
+import CollectionItem from '../collection-item/CollectionItem';
+
 type ItemProps = {
   id: number;
   name: string;
@@ -19,7 +22,7 @@ const PreviewCollection: React.FC<PreviewCollectionProps> = ({title, items}) => 
       <div className="preview">
         {
           items.filter((item, index) => index < 4).map((item: any) => ( //returns 4 items
-            <div key={item.id}>{item.name}</div>
+            <CollectionItem key={item.id} name={item.name} price={item.price} imageUrl={item.imageUrl} />
           ))
         }
       </div>
