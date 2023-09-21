@@ -3,13 +3,14 @@ import './header.scss'
 import { Link } from 'react-router-dom'
 import firebase from 'firebase/compat/app';
 import { auth } from '../../firebase/firebase.utils'
-
+import { connect } from 'react-redux'
 import Logo from '../../assets/crown.svg'
 
 type HeaderProps = {
   currentUser: firebase.User | null
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 const Header: React.FC<HeaderProps> = ({currentUser}) => {
   return (
     <div className='header'>
@@ -33,4 +34,9 @@ const Header: React.FC<HeaderProps> = ({currentUser}) => {
   )
 }
 
-export default Header
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+})
+
+// eslint-disable-next-line react-refresh/only-export-components
+export default connect(mapStateToProps)(Header)
